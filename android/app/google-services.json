@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "11449139495",
+    "project_id": "shopy-swiss",
+    "storage_bucket": "shopy-swiss.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11449139495:android:7269fc70ec6f3dd5cbe902",
+        "android_client_info": {
+          "package_name": "com.dinnova.dokan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11449139495-jjhcmc6edrpjp3a1q7s1c5b106mvialr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNqSiL16rpoCLK_LBP_5YHAu0ufe9UD-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11449139495-jjhcmc6edrpjp3a1q7s1c5b106mvialr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "11449139495-eegupkio3jq3lt0ijsfo2hbujmufdh8q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dinnova.dokan-ios.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11449139495:android:12eb3de65aa24921cbe902",
+        "android_client_info": {
+          "package_name": "com.dinnova.dokan.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11449139495-jjhcmc6edrpjp3a1q7s1c5b106mvialr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNqSiL16rpoCLK_LBP_5YHAu0ufe9UD-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11449139495-jjhcmc6edrpjp3a1q7s1c5b106mvialr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "11449139495-eegupkio3jq3lt0ijsfo2hbujmufdh8q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dinnova.dokan-ios.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11449139495:android:f47b6012742769bdcbe902",
+        "android_client_info": {
+          "package_name": "com.dinnova.dokan.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11449139495-jjhcmc6edrpjp3a1q7s1c5b106mvialr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNqSiL16rpoCLK_LBP_5YHAu0ufe9UD-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11449139495-jjhcmc6edrpjp3a1q7s1c5b106mvialr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "11449139495-eegupkio3jq3lt0ijsfo2hbujmufdh8q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dinnova.dokan-ios.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
