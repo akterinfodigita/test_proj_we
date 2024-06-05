@@ -1,4 +1,4 @@
-package com.dokan.dev
+package com.dokan
 
 import io.flutter.embedding.android.FlutterActivity
 
