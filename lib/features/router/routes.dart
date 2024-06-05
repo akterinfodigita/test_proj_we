@@ -1,10 +1,8 @@
+import 'package:dokan/core/constants/app_strings.dart';
 import 'package:flutter/material.dart';
-import 'package:dokan/core/constants/app_strings.dart';
-import 'package:dokan/core/constants/app_strings.dart';
 
 import '../auth/login/view/login_page.dart';
 import '../screens/dashboard/view/dashboard_screen.dart';
-import '../screens/splash/view/splash_screen.dart';
 
 class Routes {
   static const String splash = "/";
@@ -16,10 +14,6 @@ class Routes {
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.splash:
-        return MaterialPageRoute(
-            builder: (_) => SplashScreen(), settings: routeSettings);
-
       case Routes.login:
         return MaterialPageRoute(
             builder: (_) => LoginPage(), settings: routeSettings);

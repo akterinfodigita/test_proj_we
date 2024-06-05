@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -5,11 +6,15 @@ import 'package:dokan/core/app/app_dependency.dart';
 import 'package:dokan/core/app/app_preference.dart';
 import 'package:dokan/data/network/api_urls.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+import '../../core/app/app_config.dart';
 
 const String applicationJson = "application/json";
 const String contentType = "Content-Type";
 const String accept = "Accept";
 const String authorization = "Authorization";
+const String localization = "X-Localization";
 
 enum Method { get, post, put, delete, patch }
 
@@ -31,8 +36,15 @@ class ApiClient {
           header[contentType] = applicationJson;
           header[accept] = applicationJson;
           String token = await _appPreferences.getUserAuthToken();
+
+          String language = _appPreferences.getLanguage();
+          if (language.isNotEmpty) header[localization] = language;
+          //if (token.isNotEmpty) header[authorization] = "Bearer $token";
           if (token.isNotEmpty) {
             header[authorization] = "Bearer $token";
+          } else {
+            header[authorization] =
+                'Basic ${base64Encode(utf8.encode('$consumerKey:$consumerSecret'))}';
           }
           options.headers = header;
           return handler.next(options);
@@ -46,6 +58,7 @@ class ApiClient {
         },
       ),
     );
+    _dio.interceptors.add(PrettyDioLogger(requestBody: true));
   }
 
   Future<dynamic> request({
@@ -56,8 +69,11 @@ class ApiClient {
     bool isMultipart = false,
   }) async {
     Response response;
+
     log('[${method.name.toUpperCase()}${isMultipart ? '-MULTIPART' : ''}] Request url ======> ${_dio.options.baseUrl}$url');
+
     log('Request params ======> ${isMultipart ? (formData!.fields.toString() + formData.files.toString()).replaceAll("MapEntry(", "").replaceAll(")", "") : params}');
+
     try {
       if (method == Method.post) {
         if (isMultipart && formData != null) {
@@ -74,7 +90,7 @@ class ApiClient {
       }
       log('[$url] [${response.statusCode}] Request response =========> ${response.data}');
       return response.data;
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       log('$error');
       rethrow;
     }

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dokan/core/app/app_providers.dart';
 import 'package:dokan/features/screens/no_internet/cubit/internet_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:dokan/features/screens/no_internet/cubit/internet_cubit.dart';
 import '../../features/router/routes.dart';
 import '../../features/screens/theme/app_theme.dart';
 import '../../features/screens/theme/cubit/theme_cubit.dart';
+import 'app_context.dart';
 
 class InitApp extends StatelessWidget {
   const InitApp({Key? key}) : super(key: key);
@@ -47,10 +49,12 @@ class dokanApp extends StatelessWidget {
                     scrollBehavior: ScrollConfiguration.of(context)
                         .copyWith(physics: const BouncingScrollPhysics()),
                     debugShowCheckedModeBanner: false,
+                    navigatorKey: GetContext.navigatorKey,
+                    builder: EasyLoading.init(),
                     title: 'dokan',
                     theme: AppTheme.lightTheme,
                     onGenerateRoute: RouteGenerator.getRoute,
-                    initialRoute: Routes.splash,
+                    initialRoute: Routes.login,
                     localizationsDelegates: [...context.localizationDelegates],
                     supportedLocales: context.supportedLocales,
                     locale: context.locale,

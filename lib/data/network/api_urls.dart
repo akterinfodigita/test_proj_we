@@ -3,10 +3,11 @@ import '../../core/app/app_flavor.dart';
 class ApiUrls {
   static String baseUrl = getServerUrl();
   static const String liveUrl =
-      'https://test.hmbadhon.me/api/v1/'; //live server
-  static const String devUrl = 'https://test.hmbadhon.me/api/v1/'; // dev server
+      'http://apptest.dokandemo.com/wp-json/wp/'; //live server
+  static const String devUrl =
+      'http://apptest.dokandemo.com/wp-json/wp/'; // dev server
   static const String testUrl =
-      'https://test.hmbadhon.me/api/v1/'; // test server
+      'http://apptest.dokandemo.com/wp-json/wp/'; // test server
 
   // get current flavor url
   static String getServerUrl() {
@@ -22,6 +23,10 @@ class ApiUrls {
   }
 
   // api url name start here //
-  static const String login = 'login';
-  static const String forgot = 'forgot-password';
+  static const String loginUrl = 'jwt-auth/v1/token';
+  static const String registrationUrl = 'wc/v3/customers';
+  static const String productUrl = 'wc/v3/products';
+  static const String categoryUrl = 'wc/v3/products/categories';
+  static const String cartUrl = 'cocart/v2/cart';
+  static const String updateCart = 'cocart/v2/cart/item/';
 }
