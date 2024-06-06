@@ -1,7 +1,7 @@
 import 'package:dokan/core/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 
-import '../auth/login/view/login_page.dart';
+import '../screens/auth/login/view/login_page.dart';
 import '../screens/dashboard/view/dashboard_screen.dart';
 
 class Routes {

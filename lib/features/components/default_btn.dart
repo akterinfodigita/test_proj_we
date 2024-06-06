@@ -1,113 +1,80 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dokan/features/components/custom_svg.dart';
 
-import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_size.dart';
-
-class DefaultBtn extends StatelessWidget {
-  final String title;
-  final Function? onPress;
-  final bool isCenter;
-  final double radius;
-  final double border;
-  final Color borderColor;
-  final Color textColor;
-  final Color btnColor;
-  final TextStyle? textStyle;
-  final double textPadding;
-  final bool outlineButton;
-  final bool isIconEnable;
-  final String? icon;
-  final double? iconSize;
-  const DefaultBtn({
-    Key? key,
-    required this.title,
-    this.textColor = Colors.white,
-    this.btnColor = AppColors.kPrimaryMeatBrownColor,
-    this.borderColor = AppColors.kPrimaryMeatBrownColor,
-    this.border = 0,
-    this.onPress,
+class AppBtn extends StatelessWidget {
+  const AppBtn(
+    this.title, {
+    super.key,
+    this.tap,
+    this.color,
+    this.gradient,
+    this.border,
     this.textStyle,
-    this.outlineButton = false,
-    this.isCenter = true,
-    this.isIconEnable = false,
-    this.icon,
-    this.radius = 30.0,
-    this.textPadding = 15,
-    this.iconSize,
-  }) : super(key: key);
+    this.prefixIcon,
+    this.height,
+    this.width,
+    this.decoration,
+    this.padding,
+    this.margin,
+  });
+
+  final String title;
+  final VoidCallback? tap;
+  final Color? color;
+  final Gradient? gradient;
+  final BoxBorder? border;
+  final TextStyle? textStyle;
+  final Widget? prefixIcon;
+  final double? height;
+  final double? width;
+  final Decoration? decoration;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
-    return isIconEnable
-        ? TextButton(
-            onPressed: onPress as void Function()?,
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all(REdgeInsets.all(10)),
-              backgroundColor: MaterialStateProperty.all(btnColor),
-              elevation: MaterialStateProperty.all(0.0),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(radius),
-                  side: BorderSide(
-                    width: outlineButton ? 1 : border,
-                    color: outlineButton
-                        ? borderColor
-                        : border == 0
-                            ? Colors.transparent
-                            : borderColor,
-                  ),
-                ),
+    final decoration = this.decoration ??
+        BoxDecoration(
+          color: color ?? const Color(0xFFB8B3AC),
+          borderRadius: BorderRadius.circular(8),
+          border: border,
+        );
+
+    final buttonStyle = ButtonStyle(
+      padding: MaterialStateProperty.all(EdgeInsets.all(14)),
+      overlayColor: MaterialStateColor.resolveWith(
+        (states) => Colors.transparent,
+      ),
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0),
+        ),
+      ),
+    );
+
+    return Container(
+      height: height,
+      width: width,
+      padding: padding,
+      margin: margin,
+      decoration: decoration,
+      child: TextButton(
+        onPressed: tap,
+        style: buttonStyle,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            if (prefixIcon != null)
+              SizedBox(
+                width: 16,
               ),
+            if (prefixIcon != null) prefixIcon!,
+            Expanded(
+              child: Text(title, textAlign: TextAlign.center, style: textStyle),
             ),
-            child: Row(
-              mainAxisAlignment:
-                  isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
-              children: [
-                CustomSvg(icon: icon!, size: iconSize ?? 24.r),
-                8.horizontalSpace,
-                Text(
-                  title,
-                  textAlign: TextAlign.start,
-                  style: textStyle ??
-                      kTitleMedium.copyWith(
-                        color: outlineButton ? textColor : textColor,
-                        fontWeight: boldFont,
-                      ),
-                ),
-              ],
-            ),
-          )
-        : TextButton(
-            onPressed: onPress as void Function()?,
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all(REdgeInsets.all(10)),
-              backgroundColor: MaterialStateProperty.all(btnColor),
-              elevation: MaterialStateProperty.all(0.0),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(radius),
-                  side: BorderSide(
-                    width: outlineButton ? 1 : border,
-                    color: outlineButton
-                        ? borderColor
-                        : border == 0
-                            ? Colors.transparent
-                            : borderColor,
-                  ),
-                ),
-              ),
-            ),
-            child: Text(
-              title,
-              textAlign: TextAlign.start,
-              style: textStyle ??
-                  kTitleMedium.copyWith(
-                    color: outlineButton ? textColor : textColor,
-                    fontWeight: boldFont,
-                  ),
-            ),
-          );
+          ],
+        ),
+      ),
+    );
   }
 }

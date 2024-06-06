@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../features/auth/login/models/login_response.dart';
+import '../../features/screens/auth/login/models/login_response.dart';
 import 'app_dependency.dart';
 
 const String prefsKeyLang = "prefsKeyLang";

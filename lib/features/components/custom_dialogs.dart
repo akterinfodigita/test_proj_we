@@ -44,21 +44,14 @@ showCustomDialog({
                 Row(
                   children: [
                     Expanded(
-                      child: DefaultBtn(
-                        onPress: () {
-                          Navigator.of(context).pop();
-                          onYes();
-                        },
-                        title: confirmText ?? 'Yes',
+                      child: AppBtn(
+                        'Yes',
                       ),
                     ),
                     12.verticalSpace,
                     Expanded(
-                      child: DefaultBtn(
-                        onPress: () => Navigator.of(context).pop(),
-                        title: cancelText ?? 'No',
-                        outlineButton: true,
-                        textColor: AppColors.kBlackColor,
+                      child: AppBtn(
+                        cancelText ?? 'No',
                       ),
                     ),
                   ],
