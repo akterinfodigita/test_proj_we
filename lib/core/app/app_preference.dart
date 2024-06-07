@@ -1,9 +1,8 @@
 import 'dart:convert';
-
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../features/screens/auth/login/models/login_response.dart';
+import '../../features/screens/auth/models/login_response.dart';
 import 'app_dependency.dart';
 
 const String prefsKeyLang = "prefsKeyLang";
@@ -15,6 +14,7 @@ const String prefsKeyUserInfo = "prefsKeyUserInfo";
 const String prefsKeyUserToken = "prefsKeyUserToken";
 
 const String prefsKeyDeviceToken = "prefsKeyDeviceToken";
+const String prefsKeyUserId = "prefsKeyUserId";
 
 @injectable
 class AppPreferences {
@@ -26,11 +26,14 @@ class AppPreferences {
     _sharedPreferences.setBool(prefsKeyIsUserLoggedIn, true);
   }
 
-  Future<void> saveUserData(UserData userData) async {
+  Future<void> saveUserData(LoginResponse userData) async {
     _sharedPreferences.setString(prefsKeyUserInfo, json.encode(userData));
-    setIsUserLoggedIn();
+    //setIsUserLoggedIn();
   }
-
+  Future<void> setUserId(id) async {
+    _sharedPreferences.setString(prefsKeyUserInfo, id);
+    //setIsUserLoggedIn();
+  }
   Future<void> setUserAuthToken(String? token) async {
     _sharedPreferences.setString(prefsKeyUserToken, token ?? '');
   }
@@ -55,8 +58,8 @@ class AppPreferences {
 
   /// get preferences data start here ///
 
-  UserData getUserData() {
-    return UserData.fromJson(
+  LoginResponse getUserData() {
+    return LoginResponse.fromJson(
         json.decode(_sharedPreferences.getString(prefsKeyUserInfo)!));
   }
 
@@ -69,7 +72,7 @@ class AppPreferences {
   }
 
   String getLanguage() {
-    return _sharedPreferences.getString(prefsKeyUserLanguage) ?? 'de';
+    return _sharedPreferences.getString(prefsKeyUserLanguage) ?? 'English';
   }
 
   bool getIsAppDarkTheme() {
@@ -85,5 +88,5 @@ class AppPreferences {
     _sharedPreferences.remove(prefsKeyIsUserLoggedIn);
   }
 
-  /// get preferences data end here ///
+/// get preferences data end here ///
 }

@@ -21,11 +21,18 @@ class AppStrings {
   //sign in
   static const String login = "login_cubits";
   static const String username = "username";
-  static const String password = "password";
+  static const String password = "Password";
+  static const String confirmPass = "Confirm Password";
   static const String forgotPassword = "forgot_password";
   static const String forgotHint = "forgot_hint";
   static const String notLoginYet = "not_login_yet";
   static const String here = "here";
+  static const String signIn = "Sign In";
+  static const String signUp = "Sign Up";
+  static const String email = "Email";
+  static const String createNew = "Create New Account";
+  static const String name = "Name";
+  static const String haveAccount = "Have account? Login";
 
   //forgot password
   static const String forgotPasswordTitle = "Passwort vergessen?";

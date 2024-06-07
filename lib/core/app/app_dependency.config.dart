@@ -9,9 +9,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i4;
-import 'package:dokan/core/app/app_dependency.dart' as _i9;
+import 'package:dokan/core/app/app_dependency.dart' as _i11;
 import 'package:dokan/core/app/app_preference.dart' as _i3;
 import 'package:dokan/data/network/api_client.dart' as _i8;
+import 'package:dokan/features/screens/auth/cubit/auth_cubit.dart' as _i10;
+import 'package:dokan/features/screens/auth/repository/auth_repository_impl.dart'
+    as _i9;
 import 'package:dokan/features/screens/no_internet/cubit/internet_cubit.dart'
     as _i5;
 import 'package:dokan/features/screens/theme/cubit/theme_cubit.dart' as _i7;
@@ -40,7 +43,11 @@ Future<_i1.GetIt> $initGetIt(
   );
   gh.factory<_i7.ThemeCubit>(() => _i7.ThemeCubit());
   gh.factory<_i8.ApiClient>(() => _i8.ApiClient(gh<_i4.Dio>()));
+  gh.factory<_i9.AuthRepositoryImpl>(
+      () => _i9.AuthRepositoryImpl(gh<_i8.ApiClient>()));
+  gh.factory<_i10.AuthCubit>(
+      () => _i10.AuthCubit(gh<_i9.AuthRepositoryImpl>()));
   return getIt;
 }
 
-class _$AppModule extends _i9.AppModule {}
+class _$AppModule extends _i11.AppModule {}

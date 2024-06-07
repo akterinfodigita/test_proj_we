@@ -1,3 +1,4 @@
+import 'package:dokan/features/screens/auth/cubit/auth_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dokan/core/app/app_dependency.dart';
@@ -13,5 +14,9 @@ class AppProviders {
       <BlocProvider>[
         BlocProvider<InternetCubit>(
             create: (BuildContext context) => instance<InternetCubit>()),
+      ]+
+      <BlocProvider>[
+        BlocProvider<AuthCubit>(
+            create: (BuildContext context) => instance<AuthCubit>()),
       ];
 }

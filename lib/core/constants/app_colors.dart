@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   //App PrimaryColors
+  static const kPrimaryColor = Color(0xFFf56c42);
   static const kPrimaryMeatBrownColor = Color(0xFFE9BE41);
   static const kMeatBrown900 = Color(0xFF403108);
   static const kMeatBrown800 = Color(0xFF6E550D);
